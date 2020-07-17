@@ -93,7 +93,10 @@ public class MyPanel{
             public void mouseClicked(MouseEvent e) {
                 boolean selected = rbStart.isSelected();
                 if(selected){
-                    long startMillis = (long) player.getCurrentTime().toMillis();
+                    Duration current = player.getCurrentTime();
+                    vPanel.start = (long) current.toMillis();
+                    String time_str = getTimeString(current);
+                    l_start.setText(time_str);
                     MouseCtrl.allowDraw = true;
                     rbEnd.setEnabled(true);
                 }else{
@@ -104,6 +107,8 @@ public class MyPanel{
                     rbEnd.setSelected(false);
                     rbEnd.setEnabled(false);
                     btnRec.setEnabled(false);
+                    vPanel.start = 0;
+                    l_start.setText("00:00:00");
                 }
             }
 
@@ -257,6 +262,25 @@ public class MyPanel{
             current = total-1;
         }
         player.seek(Duration.millis(current));
+    }
+
+    public static String getTimeString(Duration d){
+        int m = (int) d.toMinutes();
+        int s = (int) d.toSeconds()%60;
+        int mm = (int) d.toMillis()%1000/10;
+        String sm = ""+m;
+        if(m<10){
+            sm = "0"+sm;
+        }
+        String ss = ""+s;
+        if(s<10){
+            ss = "0"+ss;
+        }
+        String smm = ""+mm;
+        if(mm<10){
+            smm = "0"+smm;
+        }
+        return sm+":"+ss+":"+smm;
     }
 
     private Map getVideo(String path) throws Exception{
