@@ -24,6 +24,12 @@ import java.util.Map;
 public class MyPanel{
     MediaPlayer player;
     MediaView viewer;
+    JLabel l_x;
+    JLabel l_y;
+    JLabel l_w;
+    JLabel l_h;
+    JLabel l_start;
+    JLabel l_end;
     public static void main(String[] args) throws Exception{
         MyPanel panel = new MyPanel();
         panel.initPanel();
@@ -80,14 +86,14 @@ public class MyPanel{
         btnRec.setEnabled(false);
         btnRec.setPreferredSize(new Dimension(90, 30));
         JButton btnNext = new JButton("下一个");
-        JLabel l_start = new JLabel("00:00:00");
+        l_start = new JLabel("00:00:00");
         l_start.setPreferredSize(new Dimension(90,15));
-        JLabel l_end = new JLabel("00:00:00");
+        l_end = new JLabel("00:00:00");
         l_end.setPreferredSize(new Dimension(90,15));
-        JLabel l_x = new JLabel("x:0");
-        JLabel l_y = new JLabel("y:0");
-        JLabel l_w = new JLabel("w:0");
-        JLabel l_h = new JLabel("h:0");
+        l_x = new JLabel("x:0");
+        l_y = new JLabel("y:0");
+        l_w = new JLabel("w:0");
+        l_h = new JLabel("h:0");
         rbStart.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -102,6 +108,8 @@ public class MyPanel{
                 }else{
                     vPanel.w = 0;
                     vPanel.h = 0;
+                    vPanel.x = 0;
+                    vPanel.y = 0;
                     vPanel.paint(vPanel.getGraphics());
                     MouseCtrl.allowDraw = false;
                     rbEnd.setSelected(false);
@@ -109,6 +117,12 @@ public class MyPanel{
                     btnRec.setEnabled(false);
                     vPanel.start = 0;
                     l_start.setText("00:00:00");
+                    vPanel.end = 0;
+                    l_end.setText("00:00:00");
+                    l_x.setText("x:0");
+                    l_y.setText("y:0");
+                    l_w.setText("w:0");
+                    l_h.setText("h:0");
                 }
             }
 
@@ -140,9 +154,15 @@ public class MyPanel{
                     if(selected){
                         MouseCtrl.allowDraw = false;
                         btnRec.setEnabled(true);
+                        Duration current = player.getCurrentTime();
+                        vPanel.end = (long) current.toMillis();
+                        String time_str = getTimeString(current);
+                        l_end.setText(time_str);
                     }else{
                         MouseCtrl.allowDraw = true;
                         btnRec.setEnabled(false);
+                        vPanel.end = 0;
+                        l_end.setText("00:00:00");
                     }
                 }
             }
@@ -183,8 +203,8 @@ public class MyPanel{
         frame.add(recordPane, BorderLayout.EAST);
         frame.setSize(vw+100, vh+60);
         frame.setVisible(true);
-        vPanel.addMouseListener(new MouseCtrl(player, "vPanel"));
-        vPanel.addMouseMotionListener(new MouseCtrl(player, "vPanel"));
+        vPanel.addMouseListener(new MouseCtrl(player, "vPanel", this));
+        vPanel.addMouseMotionListener(new MouseCtrl(player, "vPanel", this));
         PlayerListener playerListener = new PlayerListener(player, progressBar);
         player.setOnEndOfMedia(new Runnable() {
             @Override

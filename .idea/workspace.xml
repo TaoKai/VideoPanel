@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="be4edf82-2292-4035-aa4d-6fe8e5267213" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/META-INF/VideoPanel.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MouseCtrl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MouseCtrl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$3.class" afterDir="false" />
@@ -10,7 +12,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/PlayerListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/PlayerListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MouseCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MouseCtrl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyPanel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,7 +36,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="E:/workspace/VideoClassify" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -98,6 +100,7 @@
       <workItem from="1594967200645" duration="11682000" />
       <workItem from="1594979731687" duration="8000" />
       <workItem from="1594980150639" duration="963000" />
+      <workItem from="1595164546135" duration="2032000" />
     </task>
     <servers />
   </component>

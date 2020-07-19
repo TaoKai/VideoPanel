@@ -12,7 +12,14 @@ public class MouseCtrl implements MouseListener, MouseMotionListener {
     String ctrlName;
     static String clickButton = "play";
     static boolean allowDraw = false;
+    MyPanel panel;
     public MouseCtrl(MediaPlayer player, String ctrlName){
+        this.player = player;
+        this.ctrlName = ctrlName;
+    }
+
+    public MouseCtrl(MediaPlayer player ,String ctrlName, MyPanel panel){
+        this.panel = panel;
         this.player = player;
         this.ctrlName = ctrlName;
     }
@@ -68,6 +75,27 @@ public class MouseCtrl implements MouseListener, MouseMotionListener {
         if(this.ctrlName.equals("progressBar")){
             if(MouseCtrl.clickButton.equals("play")){
                 this.player.play();
+            }
+        }else if(this.ctrlName.equals("vPanel")){
+            JFXDPanel vPanel = (JFXDPanel) e.getComponent();
+            int x = vPanel.x;
+            int y = vPanel.y;
+            int w = vPanel.w;
+            int h = vPanel.h;
+            if(w>0 && h>0){
+                this.panel.l_x.setText("x:"+x);
+                this.panel.l_y.setText("y:"+y);
+                this.panel.l_w.setText("w:"+w);
+                this.panel.l_h.setText("h:"+h);
+            }else{
+                vPanel.x = 0;
+                vPanel.y = 0;
+                vPanel.w = 0;
+                vPanel.h = 0;
+                this.panel.l_x.setText("x:"+0);
+                this.panel.l_y.setText("y:"+0);
+                this.panel.l_w.setText("w:"+0);
+                this.panel.l_h.setText("h:"+0);
             }
         }
     }
