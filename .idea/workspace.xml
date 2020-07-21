@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be4edf82-2292-4035-aa4d-6fe8e5267213" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resource/records.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/META-INF/VideoPanel.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MouseCtrl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MouseCtrl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$3.class" afterDir="false" />
@@ -12,7 +12,8 @@
       <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MouseCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MouseCtrl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/tmp.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/resource/tmp.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyPanel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,6 +33,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1e7Xz6fvVSwAvZ5qiUnThmDeVBJ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -101,6 +105,7 @@
       <workItem from="1594979731687" duration="8000" />
       <workItem from="1594980150639" duration="963000" />
       <workItem from="1595164546135" duration="2032000" />
+      <workItem from="1595311587621" duration="5641000" />
     </task>
     <servers />
   </component>

@@ -18,49 +18,74 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MyPanel{
     MediaPlayer player;
     MediaView viewer;
+    String media_path;
+    String records_path;
+    String[] videoNames;
     JLabel l_x;
     JLabel l_y;
     JLabel l_w;
     JLabel l_h;
     JLabel l_start;
     JLabel l_end;
+    JFXDPanel vPanel;
+    JProgressBar progressBar;
+    JButton btnStart;
+    JButton btnPause;
+    JButton btnStop;
+    JPanel recordPane;
+    JRadioButton rbStart;
+    JRadioButton rbEnd;
+    JComboBox cbClasses;
+    JButton btnRec;
+    JButton btnNext;
+    JFrame frame;
+    JPanel ctrlPane;
+    PlayerListener playerListener;
+    int cur=0;
     public static void main(String[] args) throws Exception{
         MyPanel panel = new MyPanel();
         panel.initPanel();
     }
 
     public void initPanel() throws Exception{
-        JFrame frame = new JFrame();
+        this.frame = new JFrame();
         frame.setTitle("视频标注");
         frame.setLocation(500, 100);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setLayout(new BorderLayout());
-        String media_path = "resource/tmp.mp4";
-        Map ret = getVideo(media_path);
+        String basePath = System.getProperty("user.dir");
+        this.media_path = basePath+"/resource/videos";
+        this.videoNames = new File(this.media_path).list();
+        this.records_path = "resource/records.txt";
+        Map ret = getVideo(this.media_path+"/"+this.videoNames[0]);
         MultimediaInfo info = (MultimediaInfo) ret.get("info");
         this.player = (MediaPlayer) ret.get("player");
-        JFXDPanel vPanel = (JFXDPanel) ret.get("panel");
+        this.viewer = (MediaView) ret.get("viewer");
+        this.vPanel = (JFXDPanel) ret.get("panel");
         vPanel.fileName = media_path;
         vPanel.category = "软文";
         int vw = info.getVideo().getSize().getWidth();
         int vh = info.getVideo().getSize().getHeight();
         vPanel.setSize(vw, vh);
-        JPanel ctrlPane = new JPanel(new FlowLayout(FlowLayout.CENTER, 5,5));
+        this.ctrlPane = new JPanel(new FlowLayout(FlowLayout.CENTER, 5,5));
         ctrlPane.setPreferredSize(new Dimension(vw+100, 60));
-        JProgressBar progressBar = new JProgressBar();
+        this.progressBar = new JProgressBar();
         progressBar.setStringPainted(true);
         progressBar.setValue(0);
         progressBar.setString("00:00:00");
-        JButton btnStart = new JButton("播放");
-        JButton btnPause = new JButton("暂停");
-        JButton btnStop = new JButton("停止");
+        this.btnStart = new JButton("播放");
+        this.btnPause = new JButton("暂停");
+        this.btnStop = new JButton("停止");
         btnStart.addMouseListener(new MouseCtrl(player, "btnStart"));
         btnPause.addMouseListener(new MouseCtrl(player, "btnPause"));
         btnStop.addMouseListener(new MouseCtrl(player, "btnStop"));
@@ -71,21 +96,76 @@ public class MyPanel{
         ctrlPane.add(btnStart);
         ctrlPane.add(btnPause);
 //        ctrlPane.add(btnStop);
-        JPanel recordPane = new JPanel(new FlowLayout(FlowLayout.CENTER, 5,5));
-        recordPane.setPreferredSize(new Dimension(100, vh));
-        JRadioButton rbStart = new JRadioButton("开始时间", false);
-        JRadioButton rbEnd = new JRadioButton("结束时间", false);
-        rbEnd.setEnabled(false);
-        JComboBox cbClasses = new JComboBox();
-        cbClasses.addItem("软文");
+        this.recordPane = new JPanel(new FlowLayout(FlowLayout.CENTER, 5,5));
+        this.recordPane.setPreferredSize(new Dimension(100, vh));
+        this.rbStart = new JRadioButton("开始时间", false);
+        this.rbEnd = new JRadioButton("结束时间", false);
+        this.rbEnd.setEnabled(false);
+        this.cbClasses = new JComboBox();
+        cbClasses.addItem("广告软文");
         cbClasses.addItem("二维码");
         cbClasses.addItem("公众号");
-        cbClasses.addItem("电话");
+        cbClasses.addItem("各种号码");
         cbClasses.addItem("求关注");
-        JButton btnRec = new JButton("记录标注");
+        this.btnRec = new JButton("记录标注");
+        btnRec.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(btnRec.isEnabled()){
+                    String cate = cbClasses.getSelectedItem().toString();
+                    String rec = videoNames[cur]+" ["+vPanel.x+","+vPanel.y+","+vPanel.w+","+vPanel.h+"] ["+vPanel.start+" "+vPanel.end+"] "+cate+"\n";
+                    try {
+                        File f = new File(records_path);
+                        FileOutputStream fos = new FileOutputStream(f, true);
+                        fos.write(rec.getBytes());
+                        fos.close();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                    vPanel.w = 0;
+                    vPanel.h = 0;
+                    vPanel.x = 0;
+                    vPanel.y = 0;
+                    vPanel.paint(vPanel.getGraphics());
+                    MouseCtrl.allowDraw = false;
+                    rbEnd.setSelected(false);
+                    rbEnd.setEnabled(false);
+                    btnRec.setEnabled(false);
+                    vPanel.start = 0;
+                    l_start.setText("00:00:00");
+                    vPanel.end = 0;
+                    l_end.setText("00:00:00");
+                    l_x.setText("x:0");
+                    l_y.setText("y:0");
+                    l_w.setText("w:0");
+                    l_h.setText("h:0");
+                    rbStart.setSelected(false);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
         btnRec.setEnabled(false);
         btnRec.setPreferredSize(new Dimension(90, 30));
-        JButton btnNext = new JButton("下一个");
+        this.btnNext = new JButton("下一个");
         l_start = new JLabel("00:00:00");
         l_start.setPreferredSize(new Dimension(90,15));
         l_end = new JLabel("00:00:00");
@@ -187,6 +267,43 @@ public class MyPanel{
 
             }
         });
+        btnNext.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                cur += 1;
+                player.stop();
+                String path = media_path+"/"+videoNames[cur];
+                try {
+                    Map ret = getPlayerInfo(path);
+                    MultimediaInfo info = (MultimediaInfo) ret.get("info");
+                    player = (MediaPlayer) ret.get("player");
+                    viewer.setMediaPlayer(player);
+                    player.play();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
         recordPane.add(rbStart);
         recordPane.add(rbEnd);
         recordPane.add(cbClasses);
@@ -205,7 +322,7 @@ public class MyPanel{
         frame.setVisible(true);
         vPanel.addMouseListener(new MouseCtrl(player, "vPanel", this));
         vPanel.addMouseMotionListener(new MouseCtrl(player, "vPanel", this));
-        PlayerListener playerListener = new PlayerListener(player, progressBar);
+        this.playerListener = new PlayerListener(player, progressBar);
         player.setOnEndOfMedia(new Runnable() {
             @Override
             public void run() {
@@ -301,6 +418,18 @@ public class MyPanel{
             smm = "0"+smm;
         }
         return sm+":"+ss+":"+smm;
+    }
+
+    private Map getPlayerInfo(String path) throws Exception{
+        File video_source = new File(path);
+        Encoder encoder = new Encoder();
+        MultimediaInfo info = encoder.getInfo(video_source);
+        Media m = new Media(video_source.toURI().toString());
+        MediaPlayer player = new MediaPlayer(m);
+        Map ret = new HashMap();
+        ret.put("player", player);
+        ret.put("info", info);
+        return ret;
     }
 
     private Map getVideo(String path) throws Exception{
