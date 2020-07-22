@@ -13,14 +13,8 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.awt.event.*;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,6 +23,7 @@ public class MyPanel{
     MediaView viewer;
     String media_path;
     String records_path;
+    String progress_path;
     String[] videoNames;
     JLabel l_x;
     JLabel l_y;
@@ -54,6 +49,11 @@ public class MyPanel{
     public static void main(String[] args) throws Exception{
         MyPanel panel = new MyPanel();
         panel.initPanel();
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
     }
 
     private void resetVideo(MediaPlayer player, MultimediaInfo info){
@@ -103,8 +103,23 @@ public class MyPanel{
         String basePath = System.getProperty("user.dir");
         this.media_path = basePath+"/resource/videos";
         this.videoNames = new File(this.media_path).list();
+        this.progress_path = basePath+"/resource/.progress";
+        BufferedReader br = new BufferedReader(new FileReader(this.progress_path));
+        String pro = br.readLine().trim();
+        br.close();
+        for(String s:this.videoNames){
+            if(!s.equals(pro)){
+                this.cur += 1;
+            }else{
+                break;
+            }
+        }
+        if(this.cur>=this.videoNames.length){
+            this.cur = 0;
+        }
+
         this.records_path = "resource/records.txt";
-        Map ret = getVideo(this.media_path+"/"+this.videoNames[0]);
+        Map ret = getVideo(this.media_path+"/"+this.videoNames[this.cur]);
         MultimediaInfo info = (MultimediaInfo) ret.get("info");
         this.player = (MediaPlayer) ret.get("player");
         this.viewer = (MediaView) ret.get("viewer");
@@ -139,11 +154,10 @@ public class MyPanel{
         this.rbEnd = new JRadioButton("结束时间", false);
         this.rbEnd.setEnabled(false);
         this.cbClasses = new JComboBox();
-        cbClasses.addItem("软文");
         cbClasses.addItem("二维码");
-        cbClasses.addItem("公众号");
-        cbClasses.addItem("各种号码");
         cbClasses.addItem("求关注");
+        cbClasses.addItem("各种号码");
+        cbClasses.addItem("网址");
         this.btnRec = new JButton("记录标注");
         btnRec.addMouseListener(new MouseListener() {
             @Override
@@ -309,6 +323,18 @@ public class MyPanel{
             public void mouseClicked(MouseEvent e) {
                 cur += 1;
                 player.stop();
+                if(cur>=videoNames.length){
+                    try{
+                        FileOutputStream fos = new FileOutputStream(new File(progress_path), false);
+                        fos.write("none.mp4".getBytes());
+                        fos.close();
+                    }catch (Exception ex){
+                        ex.printStackTrace();
+                    }
+                    System.exit(0);
+                }
+                player.dispose();
+                player = null;
                 String path = media_path+"/"+videoNames[cur];
                 try {
                     Map ret = getPlayerInfo(path);
@@ -417,6 +443,19 @@ public class MyPanel{
             @Override
             public void keyReleased(KeyEvent e) {
 
+            }
+        });
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                String name = videoNames[cur];
+                try {
+                    FileOutputStream fos = new FileOutputStream(new File(progress_path), false);
+                    fos.write(name.getBytes());
+                    fos.close();
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                }
             }
         });
     }

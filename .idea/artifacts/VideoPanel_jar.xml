@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="VideoPanel:jar">
+    <output-path>$PROJECT_DIR$/</output-path>
+    <root id="archive" name="VideoPanel.jar">
+      <element id="module-output" name="VideoPanel" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jave-1.0.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
