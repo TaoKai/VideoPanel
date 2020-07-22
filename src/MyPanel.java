@@ -56,6 +56,43 @@ public class MyPanel{
         panel.initPanel();
     }
 
+    private void resetVideo(MediaPlayer player, MultimediaInfo info){
+        int vw = info.getVideo().getSize().getWidth();
+        int vh = info.getVideo().getSize().getHeight();
+        vPanel.setPreferredSize(new Dimension(vw, vh));
+        ctrlPane.setPreferredSize(new Dimension(vw+100, 60));
+        progressBar.setValue(0);
+        progressBar.setString("00:00:00");
+        progressBar.setPreferredSize(new Dimension(vw-20+100, 12));
+        progressBar.addMouseMotionListener(new MouseCtrl(player, "progressBar"));
+        progressBar.addMouseListener(new MouseCtrl(player, "progressBar"));
+        btnStart.addMouseListener(new MouseCtrl(player, "btnStart"));
+        btnPause.addMouseListener(new MouseCtrl(player, "btnPause"));
+        btnStop.addMouseListener(new MouseCtrl(player, "btnStop"));
+        this.recordPane.setPreferredSize(new Dimension(100, vh));
+        this.rbStart.setSelected(false);
+        this.rbEnd.setSelected(false);
+        this.rbEnd.setEnabled(false);
+        this.btnRec.setEnabled(false);
+        vPanel.w = 0;
+        vPanel.h = 0;
+        vPanel.x = 0;
+        vPanel.y = 0;
+        vPanel.paint(vPanel.getGraphics());
+        MouseCtrl.allowDraw = false;
+        vPanel.start = 0;
+        l_start.setText("00:00:00");
+        vPanel.end = 0;
+        l_end.setText("00:00:00");
+        l_x.setText("x:0");
+        l_y.setText("y:0");
+        l_w.setText("w:0");
+        l_h.setText("h:0");
+        frame.setSize(vw+100, vh+60);
+        playerListener.player = player;
+        playerListener.totalTime = player.getTotalDuration();
+    }
+
     public void initPanel() throws Exception{
         this.frame = new JFrame();
         frame.setTitle("视频标注");
@@ -102,7 +139,7 @@ public class MyPanel{
         this.rbEnd = new JRadioButton("结束时间", false);
         this.rbEnd.setEnabled(false);
         this.cbClasses = new JComboBox();
-        cbClasses.addItem("广告软文");
+        cbClasses.addItem("软文");
         cbClasses.addItem("二维码");
         cbClasses.addItem("公众号");
         cbClasses.addItem("各种号码");
@@ -278,6 +315,7 @@ public class MyPanel{
                     MultimediaInfo info = (MultimediaInfo) ret.get("info");
                     player = (MediaPlayer) ret.get("player");
                     viewer.setMediaPlayer(player);
+                    resetVideo(player, info);
                     player.play();
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -342,7 +380,7 @@ public class MyPanel{
 
             @Override
             public void keyPressed(KeyEvent e) {
-                keyAction(e, player);
+                keyAction(e);
             }
 
             @Override
@@ -358,7 +396,7 @@ public class MyPanel{
 
             @Override
             public void keyPressed(KeyEvent e) {
-                keyAction(e, player);
+                keyAction(e);
             }
 
             @Override
@@ -373,7 +411,7 @@ public class MyPanel{
 
             @Override
             public void keyPressed(KeyEvent e) {
-                keyAction(e, player);
+                keyAction(e);
             }
 
             @Override
@@ -383,7 +421,7 @@ public class MyPanel{
         });
     }
 
-    public void keyAction(KeyEvent e, MediaPlayer player){
+    public void keyAction(KeyEvent e){
         int code = e.getKeyCode();
         if(code != 37 && code != 39){
             return;

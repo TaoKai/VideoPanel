@@ -27,7 +27,7 @@ public class PlayerListener extends Thread {
                     int s = (int) d.toSeconds()%60;
                     int mm = (int) d.toMillis()%1000/10;
                     String time_str = getTimeString(m, s, mm);
-                    int progress = (int)Math.round(d.toMillis()/totalTime.toMillis()*100);
+                    int progress = (int)Math.round(d.toMillis()/totalTime.toMillis()*100.0);
                     this.bar.setString(time_str);
                     this.bar.setValue(progress);
                 } catch (InterruptedException e) {
