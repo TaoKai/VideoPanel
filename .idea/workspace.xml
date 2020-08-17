@@ -1,27 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="VideoPanel:jar" />
-    </artifacts-to-build>
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="be4edf82-2292-4035-aa4d-6fe8e5267213" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/VideoPanel_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+    <list default="true" id="4356f858-a2b1-49b9-a80b-2ad39ec1545c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/VideoPanel_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPanel.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/MyPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VideoPanel/PlayerListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VideoPanel/PlayerListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/records.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlayerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayerListener.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,36 +13,14 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1e7Xz6fvVSwAvZ5qiUnThmDeVBJ" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1gDMeLUfPoFCGtQjv8CMg39e6Nf" />
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\IDEA_workspace\VideoPanel\lib" />
-      <recent name="E:\IDEA_workspace\VideoPanel\resource" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -72,56 +34,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="MyPanel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MyPanel" />
-      <module name="VideoPanel" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.MyPanel" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="be4edf82-2292-4035-aa4d-6fe8e5267213" name="Default Changelist" comment="" />
-      <created>1593673863330</created>
+      <changelist id="4356f858-a2b1-49b9-a80b-2ad39ec1545c" name="Default Changelist" comment="" />
+      <created>1597644803772</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1593673863330</updated>
-      <workItem from="1593673866090" duration="11585000" />
-      <workItem from="1594350767960" duration="20732000" />
-      <workItem from="1594438269051" duration="484000" />
-      <workItem from="1594476754732" duration="3036000" />
-      <workItem from="1594605286922" duration="221000" />
-      <workItem from="1594613194069" duration="1177000" />
-      <workItem from="1594719900100" duration="2039000" />
-      <workItem from="1594782442043" duration="59000" />
-      <workItem from="1594799995376" duration="1227000" />
-      <workItem from="1594801853222" duration="1491000" />
-      <workItem from="1594803371016" duration="1864000" />
-      <workItem from="1594805280615" duration="2555000" />
-      <workItem from="1594958065155" duration="219000" />
-      <workItem from="1594967200645" duration="11682000" />
-      <workItem from="1594979731687" duration="8000" />
-      <workItem from="1594980150639" duration="963000" />
-      <workItem from="1595164546135" duration="2032000" />
-      <workItem from="1595311587621" duration="5641000" />
-      <workItem from="1595317986363" duration="436000" />
-      <workItem from="1595319331795" duration="284000" />
-      <workItem from="1595333413997" duration="2421000" />
-      <workItem from="1595383243560" duration="762000" />
-      <workItem from="1595388090750" duration="1184000" />
-      <workItem from="1595391232807" duration="20000" />
-      <workItem from="1595402875507" duration="495000" />
-      <workItem from="1595405537424" duration="6439000" />
+      <updated>1597644803772</updated>
+      <workItem from="1597644806013" duration="59000" />
     </task>
     <servers />
   </component>
@@ -133,9 +56,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
